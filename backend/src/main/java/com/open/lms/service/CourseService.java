@@ -39,8 +39,9 @@ public class CourseService {
     public void update(final String id, CourseDetailViewDTO courseDetailViewDTO) {
         var course = courseRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        courseMapper.mapToEntity(courseDetailViewDTO, course);
-        courseRepository.save(course);
+        var updatedCourse = courseMapper.mapToEntity(courseDetailViewDTO, course);
+        updatedCourse.setId(course.getId());
+        courseRepository.save(updatedCourse);
     }
 
     public void delete(final String id) {

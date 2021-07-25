@@ -13,6 +13,7 @@ import java.util.List;
 @Data
 public class CourseDetailViewDTO {
 
+    private String id;
     @Valid
     private CurriculumViewDTO curriculumViewDTO;
     @Valid
@@ -58,7 +59,6 @@ public class CourseDetailViewDTO {
         @Data
         public static class CourseStaffSettingsView {
             private List<String> adminUserIds;
-            private List<String> affiliates;
         }
 
         @Data

@@ -5,14 +5,16 @@ import com.open.lms.model.Lesson;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = CommentMapper.class)
+@Service
 public abstract class LessonMapper {
 
     @Autowired
-    protected CommentMapper commentMapper;
+    CommentMapper commentMapper;
 
     @Mapping(target = "comments", expression = "java(commentMapper.mapToEntityList(lessonDTO.getCommentDTOS()))")
     abstract Lesson mapToEntity(final LessonDTO lessonDTO);

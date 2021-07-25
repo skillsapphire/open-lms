@@ -2,15 +2,18 @@ package com.open.lms.mapper;
 
 import com.open.lms.dto.course.CourseDetailViewDTO;
 import com.open.lms.model.Module;
-import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+@Mapper(componentModel = "spring", uses = LessonMapper.class)
+@Service
 public abstract class ModuleMapper {
 
+    @Autowired
     LessonMapper lessonMapper;
 
     public abstract List<CourseDetailViewDTO.ModuleDTO> mapToDTOList(List<Module> modules);
