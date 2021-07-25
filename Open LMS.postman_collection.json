@@ -1,0 +1,1063 @@
+{
+	"info": {
+		"_postman_id": "851e339f-da2e-4675-b57c-5a104e6ccc97",
+		"name": "Open LMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create School",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJOY1M0XzgySnhsVzBDTm5XRmRNb2lXSl9wejhoazVkeVgxT0pWeUlIT2FZIn0.eyJleHAiOjE2MjcxODE0NDYsImlhdCI6MTYyNzE4MTE0NiwianRpIjoiMDgwYmM0YWMtYWIxZC00ZDY4LTk4M2ItMWMxOWFlMjRjNWU2IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL2F1dGgvcmVhbG1zL29wZW4tbG1zLXJlYWxtIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjVlMWY2NzI5LWE0NmItNDUzZS1hN2FjLTM0NGRlMzZmZTEwMCIsInR5cCI6IkJlYXJlciIsImF6cCI6Im9wZW4tbG1zLWNvbmZpZGVudGlhbC1jbGllbnQiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtb3Blbi1sbXMtcmVhbG0iLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJvcGVuaWQgb2ZmbGluZV9hY2Nlc3MgZW1haWwgcHJvZmlsZSIsImNsaWVudElkIjoib3Blbi1sbXMtY29uZmlkZW50aWFsLWNsaWVudCIsImNsaWVudEhvc3QiOiIxMjcuMC4wLjEiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6InNlcnZpY2UtYWNjb3VudC1vcGVuLWxtcy1jb25maWRlbnRpYWwtY2xpZW50IiwiY2xpZW50QWRkcmVzcyI6IjEyNy4wLjAuMSJ9.BnwLOuo4EJGCuKktLLygkWXqVlPVp3P0-DeoYF7GJhuMaXFYUqOf6Dl1QQ8lFmHh_pSOtbrWfwzf4U4-3mwEhMcqI5kXgliM0NfwlysIC3TrGRX49DSR5d2Z4eYnPUJas1FET3dtgmVL1svqVhGIuSRqWZWCuG3SxhDJv6jArs_8dOdSN03i-XaOw-aExUfl2xi2gVmRioX6SllMAzQYIGcocU9gwErL5102e4SN-Dj1-p6ak3204jCEDRHzvlsxEG3rJhSL1xs6y1blLqOa6d4sr-Ti4eTyVdyAGshWkK6tXvkjYItA7OOaTzL2yDNR1f_yDzGO-QvU-LJdR_S_oA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Programming Techie\",\r\n    \"domainName\":\"programmingtechie.com\",\r\n    \"currencyUnit\":\"EUR\",\r\n    \"schoolAddress\":\"courses.programmingtechie.com\",\r\n    \"paymentMethod\":\"PAYPAL\",\r\n    \"orderPrefix\":\"ORD\",\r\n    \"orderIdStartingValue\":10000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/schools",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"schools"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Schools",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "fd1c9300-b0b8-4937-9fab-949546be8794",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "open-lms-confidential-client",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/auth/realms/open-lms-realm/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "programming-techie",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "openid offline_access",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080/login/oauth2/code/oauth2-demo-thymeleaf-client",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "state",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/auth/realms/oauth2-demo-realm/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "keycloak-bearer-token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"60fcd13c3f73de3ce08d3285\",\r\n    \"name\": \"Programming Techie\",\r\n    \"domainName\": \"programmingtechie.com\",\r\n    \"currencyUnit\": \"INR\",\r\n    \"schoolAddress\": \"courses.programmingtechie.com\",\r\n    \"stripeKey\": null,\r\n    \"paypalKey\": null,\r\n    \"paytmKey\": null,\r\n    \"paymentMethod\": \"PAYPAL\",\r\n    \"enableGoogleLogin\": null,\r\n    \"enableFacebookLogin\": null,\r\n    \"enableGithubLogin\": null,\r\n    \"orderIdPrefix\":\"ORD\",\r\n    \"orderIdStartingValue\": 10000,\r\n    \"mailChimpIntegrationKey\": null,\r\n    \"activeCampaignIntegrationKey\": null,\r\n    \"sendinBlueIntegrationKey\": null,\r\n    \"convertKitIntegrationKey\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/schools/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"schools",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Course",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "fd1c9300-b0b8-4937-9fab-949546be8794",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "open-lms-confidential-client",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/auth/realms/open-lms-realm/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "programming-techie",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "openid offline_access",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080/login/oauth2/code/oauth2-demo-thymeleaf-client",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "state",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/auth/realms/oauth2-demo-realm/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "keycloak-bearer-token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"courseName\":\"Full Stack Spring Boot and Angular Project\",\r\n    \"schoolId\":\"60fcd13c3f73de3ce08d3285\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/courses/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"courses",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Course",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "fd1c9300-b0b8-4937-9fab-949546be8794",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "open-lms-confidential-client",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/auth/realms/open-lms-realm/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "programming-techie",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "openid offline_access",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080/login/oauth2/code/oauth2-demo-thymeleaf-client",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "state",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/auth/realms/oauth2-demo-realm/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "keycloak-bearer-token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"curriculumViewDTO\": {\r\n        \"moduleDTOList\": [\r\n            {\r\n                \"title\": \"Introduction\",\r\n                \"draft\": true,\r\n                \"lessonDTOS\": [\r\n                    {\r\n                        \"title\": \"Introduction to Junit 5\",\r\n                        \"lessonType\": \"VIDEO\",\r\n                        \"mediaUrl\": \"https://www.youtube.com/watch?v=bx-ZtLbGDHw\",\r\n                        \"text\": \"This is a introductory JUnit 5 Tutorial\",\r\n                        \"downloadable\": false,\r\n                        \"needEnrollment\": false,\r\n                        \"enableComments\": false,\r\n                        \"enableFreePreview\": false,\r\n                        \"draft\": false                        \r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    },\r\n    \"courseSettingsViewDTO\": {\r\n        \"basicSettingsView\": {\r\n            \"name\": \"Full Stack Spring Boot and Angular Project\",\r\n            \"slug\": \"Full Stack Spring Boot and Angular Project\",\r\n            \"userId\": null,\r\n            \"imageUrl\": \"https://i.ytimg.com/vi/bx-ZtLbGDHw/maxresdefault.jpg\",\r\n            \"description\": \"Full Stack Spring Boot and Angular Project\"\r\n        },\r\n        \"courseStaffSettingsView\": {\r\n            \"adminUserIds\":[]\r\n        },\r\n        \"seoSettingsView\": {\r\n            \"seoTitle\": \"Full Stack Spring Boot and Angular Project\",\r\n            \"seoDescription\": \"Full Stack Spring Boot and Angular Project\",\r\n            \"seoKeywords\": [\"spring boot\", \"java\", \"angular\", \"fullstack\"]\r\n        }\r\n    },\r\n    \"coursePricingView\": {\r\n        \"pricingType\": \"FREE\"\r\n    },\r\n    \"courseStatus\": \"DRAFT\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/courses/60fd8dc0e387360b4b9f30f2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"courses",
+						"60fd8dc0e387360b4b9f30f2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Course",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "fd1c9300-b0b8-4937-9fab-949546be8794",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "open-lms-confidential-client",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/auth/realms/open-lms-realm/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "programming-techie",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "openid offline_access",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080/login/oauth2/code/oauth2-demo-thymeleaf-client",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "state",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/auth/realms/oauth2-demo-realm/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "keycloak-bearer-token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/courses/60fdb4b01dcc783391090dd5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"courses",
+						"60fdb4b01dcc783391090dd5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Course",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "fd1c9300-b0b8-4937-9fab-949546be8794",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "open-lms-confidential-client",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/auth/realms/open-lms-realm/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "programming-techie",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "openid offline_access",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080/login/oauth2/code/oauth2-demo-thymeleaf-client",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "state",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/auth/realms/oauth2-demo-realm/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "keycloak-bearer-token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/courses/60fdb4b01dcc783391090dd5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"courses",
+						"60fdb4b01dcc783391090dd5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Coupon",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "fd1c9300-b0b8-4937-9fab-949546be8794",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "open-lms-confidential-client",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/auth/realms/open-lms-realm/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "programming-techie",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "openid offline_access",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080/login/oauth2/code/oauth2-demo-thymeleaf-client",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "state",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/auth/realms/oauth2-demo-realm/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "keycloak-bearer-token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Summer Sale Coupon\",\r\n    \"discount\": {\r\n        \"discountType\": \"PERCENTAGE\",\r\n        \"discountPercentage\": 20\r\n    },\r\n    \"code\":\"Summer_SALE_20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/coupons/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"coupons",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Coupons",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "fd1c9300-b0b8-4937-9fab-949546be8794",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "open-lms-confidential-client",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/auth/realms/open-lms-realm/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "programming-techie",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "openid offline_access",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080/login/oauth2/code/oauth2-demo-thymeleaf-client",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "state",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/auth/realms/oauth2-demo-realm/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "keycloak-bearer-token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/coupons/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"coupons",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Coupon",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "fd1c9300-b0b8-4937-9fab-949546be8794",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "open-lms-confidential-client",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/auth/realms/open-lms-realm/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "programming-techie",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "openid offline_access",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080/login/oauth2/code/oauth2-demo-thymeleaf-client",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "state",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/auth/realms/oauth2-demo-realm/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "keycloak-bearer-token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/coupons/60fdc4a83f88e606b4b0d27d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"coupons",
+						"60fdc4a83f88e606b4b0d27d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Coupon",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "fd1c9300-b0b8-4937-9fab-949546be8794",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "open-lms-confidential-client",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/auth/realms/open-lms-realm/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "programming-techie",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "openid offline_access",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080/login/oauth2/code/oauth2-demo-thymeleaf-client",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "state",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/auth/realms/oauth2-demo-realm/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "keycloak-bearer-token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"60fdc4a83f88e606b4b0d27d\",\r\n    \"name\": \"Summer Sale Coupon\",\r\n    \"discount\": {\r\n        \"discountType\": \"PERCENTAGE\",\r\n        \"discountAmount\": null,\r\n        \"discountPercentage\": 30\r\n    },\r\n    \"code\": \"Summer_SALE_30\",\r\n    \"expiration\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/coupons/60fdc4a83f88e606b4b0d27d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"coupons",
+						"60fdc4a83f88e606b4b0d27d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Coupon",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "fd1c9300-b0b8-4937-9fab-949546be8794",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "open-lms-confidential-client",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8180/auth/realms/open-lms-realm/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "programming-techie",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "openid offline_access",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8080/login/oauth2/code/oauth2-demo-thymeleaf-client",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "state",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8180/auth/realms/oauth2-demo-realm/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "keycloak-bearer-token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/coupons/60fdc4a83f88e606b4b0d27d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"coupons",
+						"60fdc4a83f88e606b4b0d27d"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
