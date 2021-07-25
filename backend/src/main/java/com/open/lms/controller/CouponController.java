@@ -44,7 +44,7 @@ public class CouponController {
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCoupon(@PathVariable final String id) {
         couponService.delete(id);
     }
