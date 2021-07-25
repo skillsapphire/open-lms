@@ -1,5 +1,5 @@
 package com.open.lms.model;
 
 public enum PricingType {
-    FREE, ONE_TIME, SUBSCRIPTION
+    FREE, ONE_TIME
 }
