@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.javamoney.moneta.Money;
 
+import javax.validation.constraints.Max;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,5 +15,6 @@ import org.javamoney.moneta.Money;
 public class Discount {
     private DiscountType discountType;
     private Money discountAmount;
-    private String discountPercentage;
+    @Max(value = 100)
+    private Integer discountPercentage;
 }
