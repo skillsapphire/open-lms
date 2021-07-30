@@ -21,8 +21,8 @@ public class CommentController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<CommentDTO>> getAllComments() {
-        return ResponseEntity.ok(commentService.findAll());
+    public List<CommentDTO> getAllComments() {
+        return commentService.findAll();
     }
 
     @GetMapping("/{id}")

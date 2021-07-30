@@ -50,4 +50,7 @@ public class LmsUserService {
         lmsUserRepository.deleteById(id);
     }
 
+    public LmsUserDTO validateUser(String authorization) {
+        return null;
+    }
 }

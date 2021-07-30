@@ -1,12 +1,14 @@
 package com.open.lms.controller;
 
 import com.open.lms.dto.LmsUserDTO;
+import com.open.lms.dto.UserInfoDTO;
 import com.open.lms.service.LmsUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -47,6 +49,14 @@ public class LmsUserController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteLmsUser(@PathVariable final String id) {
         lmsUserService.delete(id);
+    }
+
+    @GetMapping("validate")
+    @ResponseStatus(HttpStatus.OK)
+    public LmsUserDTO validate(HttpServletRequest httpRequest) {
+        LmsUserDTO userInfoDTO = lmsUserService.validateUser(httpRequest.getHeader("Authorization"));
+        lmsUserService.create(userInfoDTO);
+        return userInfoDTO;
     }
 
 }

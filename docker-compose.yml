@@ -30,8 +30,8 @@ services:
     ports:
       - "27017:27017"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME?'MONGO_ROOT_USERNAME environment variable is not defined'}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD?'MONGO_ROOT_PASSWORD environment variable is not defined'}
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: mongodb
     volumes:
       - ${MEDIA_FOLDER?'MEDIA_FOLDER environment variable is not defined'}/mongo/data/db:/data/db
     command: --quiet

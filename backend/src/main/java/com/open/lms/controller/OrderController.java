@@ -1,6 +1,7 @@
 package com.open.lms.controller;
 
 import com.open.lms.dto.OrderDTO;
+import com.open.lms.dto.OrderResponse;
 import com.open.lms.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -48,4 +49,18 @@ public class OrderController {
     public void deleteOrder(@PathVariable final String id) {
         orderService.delete(id);
     }
+
+    @GetMapping("/payment/cancel")
+    @ResponseStatus(HttpStatus.OK)
+    public String paymentCancel() {
+        return "Payment Cancelled";
+    }
+
+    @GetMapping("/payment/success")
+    @ResponseStatus(HttpStatus.OK)
+    public OrderResponse paymentSuccess(@RequestParam("paymentId") String paymentId,
+                                        @RequestParam("PayerID") String payerId) {
+        return orderService.completePaymentOrder(paymentId, payerId);
+    }
+
 }

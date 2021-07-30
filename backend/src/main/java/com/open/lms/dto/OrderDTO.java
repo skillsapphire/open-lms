@@ -10,24 +10,19 @@ import org.javamoney.moneta.Money;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.Instant;
 
 
 @Getter
 @Setter
 public class OrderDTO {
-
-    @NotNull
-    @Size(max = 255)
     private String id;
 
-    @Size(max = 255)
+    @NotNull
     private String courseId;
-
     private Instant orderedDate;
 
-    @Size(max = 255)
+    @NotNull
     private String paymentId;
 
     private Money finalPrice;
@@ -35,11 +30,8 @@ public class OrderDTO {
 
     @Valid
     private Discount discount;
-
     private OrderStatus orderStatus;
-
     private PaymentStatus paymentStatus;
-
     private PaymentMethod paymentMethod;
 
 }

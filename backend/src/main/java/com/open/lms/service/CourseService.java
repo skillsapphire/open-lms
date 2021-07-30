@@ -56,6 +56,7 @@ public class CourseService {
         course.setSchoolId(initCourseDTO.getSchoolId());
         course.setInstructor(null);
         course.setModules(Collections.emptyList());
+        course.setAdminUsers(Collections.emptyList());
         courseRepository.save(course);
         return courseMapper.mapToDetailViewDto(course);
     }

@@ -107,6 +107,11 @@
         </dependency>
 
         <dependency>
+            <groupId>com.paypal.sdk</groupId>
+            <artifactId>rest-api-sdk</artifactId>
+            <version>1.14.0</version>
+        </dependency>
+        <dependency>
             <groupId>com.open.lms</groupId>
             <artifactId>frontend</artifactId>
             <version>0.0.1-SNAPSHOT</version>

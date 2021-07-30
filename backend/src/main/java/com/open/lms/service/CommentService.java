@@ -2,6 +2,7 @@ package com.open.lms.service;
 
 import com.open.lms.dto.CommentDTO;
 import com.open.lms.model.Comment;
+import com.open.lms.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CommentService {
 
-    private final com.open.lms.repository.CommentRepository commentRepository;
+    private final CommentRepository commentRepository;
 
     public List<CommentDTO> findAll() {
         return commentRepository.findAll()
