@@ -1,5 +1,6 @@
 package com.open.lms.model;
 
+import com.open.lms.service.payment.PaymentConfig;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,18 +24,12 @@ public class School {
     private CurrencyUnit currencyUnit;
     private String logoUrl;
     private String schoolAddress;
-    private String stripeKey;
-    private String paypalKey;
-    private String paytmKey;
-    private PaymentMethod paymentMethod;
+    private PaymentConfig paymentConfig;
     private Boolean enableGoogleLogin;
     private Boolean enableFacebookLogin;
     private Boolean enableGithubLogin;
     private String orderIDPrefix;
     private int orderIdStartingValue;
-    private String mailChimpIntegrationKey;
-    private String activeCampaignIntegrationKey;
-    private String sendinBlueIntegrationKey;
-    private String convertKitIntegrationKey;
+    private MailingListProvider mailingListProvider;
     private List<Course> courses;
 }

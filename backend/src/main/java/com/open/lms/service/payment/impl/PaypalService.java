@@ -1,12 +1,14 @@
 package com.open.lms.service.payment.impl;
 
 import com.open.lms.model.PaymentMethod;
+import com.open.lms.service.payment.PaymentConfig;
 import com.open.lms.service.payment.PaymentService;
 import com.paypal.api.payments.*;
 import com.paypal.base.rest.APIContext;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.javamoney.moneta.Money;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,11 +18,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PaypalService implements PaymentService {
 
-    private final APIContext apiContext;
+    @Value("${paypal.mode}")
+    private String mode;
 
     @Override
     @SneakyThrows
-    public Payment createPayment(Money finalPrice) {
+    public Payment createPayment(Money finalPrice, PaymentConfig paymentConfig) {
         var amount = new Amount();
         amount.setCurrency(finalPrice.getCurrency().getCurrencyCode());
         amount.setTotal(finalPrice.getNumberStripped().toString());
@@ -41,16 +44,17 @@ public class PaypalService implements PaymentService {
         redirectUrls.setCancelUrl("http://localhost:4200/order/cancelled");
         redirectUrls.setReturnUrl("http://localhost:4200/order/success");
         payment.setRedirectUrls(redirectUrls);
-        return payment.create(apiContext);
+
+        return payment.create(new APIContext(paymentConfig.getClientId(), paymentConfig.getClientSecret(), mode));
     }
 
     @SneakyThrows
-    public void completePayment(String paymentId, String payerId) {
+    public void completePayment(String paymentId, String payerId, PaymentConfig paymentConfig) {
         var payment = new Payment();
         payment.setId(paymentId);
         var paymentExecution = new PaymentExecution();
         paymentExecution.setPayerId(payerId);
-        payment.execute(apiContext, paymentExecution);
+        payment.execute(new APIContext(paymentConfig.getClientId(), paymentConfig.getClientSecret(), mode), paymentExecution);
     }
 
     @Override

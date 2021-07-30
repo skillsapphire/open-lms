@@ -1,9 +1,14 @@
 package com.open.lms.service;
 
 import com.open.lms.dto.LmsUserDTO;
+import com.open.lms.exceptions.ApplicationException;
+import com.open.lms.integration.MailIntegration;
+import com.open.lms.integration.MailIntegrationFactory;
 import com.open.lms.mapper.LmsUserMapper;
 import com.open.lms.model.LmsUser;
+import com.open.lms.model.School;
 import com.open.lms.repository.LmsUserRepository;
+import com.open.lms.repository.SchoolRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -19,6 +24,8 @@ public class LmsUserService {
 
     private final LmsUserMapper lmsUserMapper;
     private final LmsUserRepository lmsUserRepository;
+    private final MailIntegrationFactory mailIntegrationFactory;
+    private final SchoolRepository schoolRepository;
 
     public List<LmsUserDTO> findAll() {
         return lmsUserRepository.findAll()
@@ -36,7 +43,12 @@ public class LmsUserService {
     public String create(final LmsUserDTO lmsUserDTO) {
         var lmsUser = new LmsUser();
         lmsUserMapper.mapToEntity(lmsUserDTO, lmsUser);
-        return lmsUserRepository.save(lmsUser).getId();
+        String userId = lmsUserRepository.save(lmsUser).getId();
+        School school = schoolRepository.findById(lmsUserDTO.getSchoolId())
+                .orElseThrow(() -> new ApplicationException("School Not Found with ID -" + lmsUserDTO.getSchoolId()));
+        MailIntegration mailIntegration = mailIntegrationFactory.get(school.getMailingListProvider().getMailProvider());
+        mailIntegration.registerUser(lmsUser, school);
+        return userId;
     }
 
     public void update(final String id, final LmsUserDTO lmsUserDTO) {

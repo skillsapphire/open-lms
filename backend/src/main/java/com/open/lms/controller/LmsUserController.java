@@ -1,7 +1,6 @@
 package com.open.lms.controller;
 
 import com.open.lms.dto.LmsUserDTO;
-import com.open.lms.dto.UserInfoDTO;
 import com.open.lms.service.LmsUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -33,8 +33,8 @@ public class OrderController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createOrder(@RequestBody @Valid final OrderDTO orderDTO) {
-        orderService.create(orderDTO);
+    public String createOrder(@RequestBody @Valid final OrderDTO orderDTO) {
+        return orderService.create(orderDTO);
     }
 
     @PutMapping("/{id}")

@@ -19,6 +19,7 @@ public class Order {
     @Id
     private String id;
     private String courseId;
+    private String schoolId;
     private LmsUser orderedBy;
     private Instant orderedDate;
     private String paymentId;

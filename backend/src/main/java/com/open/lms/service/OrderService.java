@@ -6,10 +6,10 @@ import com.open.lms.exceptions.ApplicationException;
 import com.open.lms.mapper.OrderMapper;
 import com.open.lms.model.Order;
 import com.open.lms.model.OrderStatus;
+import com.open.lms.model.School;
 import com.open.lms.repository.OrderRepository;
-import com.open.lms.service.payment.PaymentService;
+import com.open.lms.repository.SchoolRepository;
 import com.open.lms.service.payment.PaymentServiceFactory;
-import com.paypal.api.payments.Payment;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -27,8 +27,8 @@ public class OrderService {
 
     private final OrderMapper orderMapper;
     private final PaymentServiceFactory paymentServiceFactory;
-    private final PaymentService paymentService;
     private final OrderRepository orderRepository;
+    private final SchoolRepository schoolRepository;
 
     public List<OrderDTO> findAll() {
         return orderRepository.findAll()
@@ -45,7 +45,9 @@ public class OrderService {
 
     public String create(final OrderDTO orderDTO) {
         var paymentService = paymentServiceFactory.get(orderDTO.getPaymentMethod());
-        Payment payment = paymentService.createPayment(orderDTO.getFinalPrice());
+        School school = schoolRepository.findById(orderDTO.getSchoolId())
+                .orElseThrow(() -> new ApplicationException("School not found with ID - " + orderDTO.getSchoolId()));
+        var payment = paymentService.createPayment(orderDTO.getFinalPrice(), school.getPaymentConfig());
         var order = new Order();
         order.setPaymentId(payment.getId());
         orderMapper.mapToEntity(orderDTO, order);
@@ -75,11 +77,16 @@ public class OrderService {
         if (order.getOrderStatus().equals(OrderStatus.PROCESSED)) {
             throw new ApplicationException("Order already completed");
         }
-        paymentService.completePayment(paymentId, payerId);
+
+        var school = schoolRepository.findById(order.getCourseId())
+                .orElseThrow(() -> new ApplicationException("School Not Found with id - " + order.getCourseId()));
+
+        var paymentService = paymentServiceFactory.get(order.getPaymentMethod());
+        paymentService.completePayment(paymentId, payerId, school.getPaymentConfig());
         order.setPaymentStatus(PROCESSED);
         orderRepository.save(order);
 
-        OrderResponse orderResponse = new OrderResponse();
+        var orderResponse = new OrderResponse();
         orderResponse.setMessage("Order Placed Successfully!");
         orderResponse.setOrderId(orderResponse.getOrderId());
         orderResponse.setPaymentStatus(orderResponse.getPaymentStatus());

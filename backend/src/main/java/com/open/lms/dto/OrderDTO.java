@@ -20,6 +20,7 @@ public class OrderDTO {
 
     @NotNull
     private String courseId;
+    private String schoolId;
     private Instant orderedDate;
 
     @NotNull

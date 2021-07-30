@@ -22,4 +22,5 @@ public class LmsUser {
     private String lastName;
     private List<Order> orders;
     private String email;
+    private Boolean subscribed;
 }

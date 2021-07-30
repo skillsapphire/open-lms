@@ -31,4 +31,7 @@ public class LmsUserDTO {
     @Size(max = 255)
     private List<OrderDTO> orders;
 
+    @NotNull
+    private String schoolId;
+
 }
